@@ -9,8 +9,13 @@ export default Ember.Route.extend({
   actions: {
 
     saveMessage(newMessage) {
-      console.log('saveMessage');
-      newMessage.save().then(() => this.transitionTo('/'));
+
+      newMessage.save().then((response) => {
+        console.log('Route newMessage.save() response');
+        console.log(response);
+        this.transitionTo('/');
+      });
+    
     },
 
     willTransition() {
@@ -20,10 +25,6 @@ export default Ember.Route.extend({
         model.destroyRecord();
       }
     }
-    // willTransition() {
-    //   // rollbackAttributes() removes the record from the store
-    //   // if the model 'isNew'
-    //   this.controller.get('model').rollbackAttributes();
-    // }
+
   }
 });

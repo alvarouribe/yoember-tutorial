@@ -10,9 +10,10 @@ define('library-app/routes/contact', ['exports', 'ember'], function (exports, _e
       saveMessage: function saveMessage(newMessage) {
         var _this = this;
 
-        console.log('saveMessage');
-        newMessage.save().then(function () {
-          return _this.transitionTo('/');
+        newMessage.save().then(function (response) {
+          console.log('Route newMessage.save() response');
+          console.log(response);
+          _this.transitionTo('/');
         });
       },
 
@@ -23,11 +24,7 @@ define('library-app/routes/contact', ['exports', 'ember'], function (exports, _e
           model.destroyRecord();
         }
       }
-      // willTransition() {
-      //   // rollbackAttributes() removes the record from the store
-      //   // if the model 'isNew'
-      //   this.controller.get('model').rollbackAttributes();
-      // }
+
     }
   });
 });

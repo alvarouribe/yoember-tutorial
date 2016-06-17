@@ -2,47 +2,68 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  emailAddress: '',
+  email: '',
   name: '',
   message: '',
 
-  isEmailValid: Ember.computed.match('emailAddress', /^.+@.+\..+$/),
-  isNameValid:   Ember.computed.gte('name.length', 0),
-  isMessageValid: Ember.computed.gte('message.length', 5),
+  isEmailValid: Ember.computed.match('model.email', /^.+@.+\..+$/),
+  isNameValid:   Ember.computed.gte('model.name.length', 0),
+  isMessageValid: Ember.computed.gte('model.message.length', 5),
 
 
   isDisabled: Ember.computed('isEmailValid', 'isMessageValid', 'isNameValid', function() {
   	return !((this.get('isEmailValid')) && (this.get('isMessageValid')) && (this.get('isNameValid'))); 
 	}),
 	actions: {
-		sendMessage() {
-    const email = this.get('emailAddress');
-    const name = this.get('name');
-    const message = this.get('message');
-    
-    const newContact = this.store.createRecord('contact', { 
-      email: email, 
-      name: name, 
-      message: message 
-    });
 
-    newContact.save().then((response) => {
-      alert('New contact saved. Response back!');
-      console.log(response);
-    });
+		testController(newMessage) {
+      console.log('TEST VALIDATION newMessage: ');
+      // console.log(newMessage);
 
-  	console.log('SEND: ');
+      // const name = this.get('model.name');
+      // console.log('name: ');
+      // console.log(name);
+      
+      // console.log('this.get(email)');
+      // console.log('this.get(message)');
 
-  	console.log('isEmailValid');
-  	console.log(this.get('isEmailValid'));
+      // console.log(this.get('email'));
+      // console.log(this.get('name'));
+      // console.log(this.get('message'));
 
-		console.log('isMessageValid');
-		console.log(this.get('isMessageValid'));
+      console.log('isEmailValid');
+      console.log(this.get('isEmailValid'));
 
-		console.log('isNameValid');
-		console.log(this.get('isNameValid'));
+      console.log('isMessageValid');
+      console.log(this.get('isMessageValid'));
 
-		}
+      console.log('isNameValid');
+      console.log(this.get('isNameValid'));
+    },
+
+    // sendMessage() {
+    //   console.log('CONTROLLER sendMessage newMessage: ');
+    //   console.log(newMessage);
+
+      ////////////////////////
+      // THIS FORM WORKS TO      
+      ////////////////////////
+      // const email = this.get('emailAddress');
+      // const name = this.get('name');
+      // const message = this.get('message');
+      
+      // const newContact = this.store.createRecord('contact', { 
+      //   email: email, 
+      //   name: name, 
+      //   message: message 
+      // });
+
+      // newContact.save().then((response) => {
+      //   alert('New contact saved. Response back!');
+      //   console.log(response);
+      // });
+
+		// }
 	}	
 
 });

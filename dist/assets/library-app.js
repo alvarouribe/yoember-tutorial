@@ -41,35 +41,33 @@ define('library-app/components/app-version', ['exports', 'ember-cli-app-version/
 define('library-app/controllers/contact', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller.extend({
 
-    emailAddress: '',
+    email: '',
     name: '',
     message: '',
 
-    isEmailValid: _ember['default'].computed.match('emailAddress', /^.+@.+\..+$/),
-    isNameValid: _ember['default'].computed.gte('name.length', 0),
-    isMessageValid: _ember['default'].computed.gte('message.length', 5),
+    isEmailValid: _ember['default'].computed.match('model.email', /^.+@.+\..+$/),
+    isNameValid: _ember['default'].computed.gte('model.name.length', 0),
+    isMessageValid: _ember['default'].computed.gte('model.message.length', 5),
 
     isDisabled: _ember['default'].computed('isEmailValid', 'isMessageValid', 'isNameValid', function () {
       return !(this.get('isEmailValid') && this.get('isMessageValid') && this.get('isNameValid'));
     }),
     actions: {
-      sendMessage: function sendMessage() {
-        var email = this.get('emailAddress');
-        var name = this.get('name');
-        var message = this.get('message');
 
-        var newContact = this.store.createRecord('contact', {
-          email: email,
-          name: name,
-          message: message
-        });
+      testController: function testController(newMessage) {
+        console.log('TEST VALIDATION newMessage: ');
+        // console.log(newMessage);
 
-        newContact.save().then(function (response) {
-          alert('New contact saved. Response back!');
-          console.log(response);
-        });
+        // const name = this.get('model.name');
+        // console.log('name: ');
+        // console.log(name);
 
-        console.log('SEND: ');
+        // console.log('this.get(email)');
+        // console.log('this.get(message)');
+
+        // console.log(this.get('email'));
+        // console.log(this.get('name'));
+        // console.log(this.get('message'));
 
         console.log('isEmailValid');
         console.log(this.get('isEmailValid'));
@@ -80,10 +78,34 @@ define('library-app/controllers/contact', ['exports', 'ember'], function (export
         console.log('isNameValid');
         console.log(this.get('isNameValid'));
       }
+
     }
 
   });
 });
+// sendMessage() {
+//   console.log('CONTROLLER sendMessage newMessage: ');
+//   console.log(newMessage);
+
+////////////////////////
+// THIS FORM WORKS TO     
+////////////////////////
+// const email = this.get('emailAddress');
+// const name = this.get('name');
+// const message = this.get('message');
+
+// const newContact = this.store.createRecord('contact', {
+//   email: email,
+//   name: name,
+//   message: message
+// });
+
+// newContact.save().then((response) => {
+//   alert('New contact saved. Response back!');
+//   console.log(response);
+// });
+
+// }
 define('library-app/controllers/index', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller.extend({
 
@@ -357,9 +379,10 @@ define('library-app/routes/contact', ['exports', 'ember'], function (exports, _e
       saveMessage: function saveMessage(newMessage) {
         var _this = this;
 
-        console.log('saveMessage');
-        newMessage.save().then(function () {
-          return _this.transitionTo('/');
+        newMessage.save().then(function (response) {
+          console.log('Route newMessage.save() response');
+          console.log(response);
+          _this.transitionTo('/');
         });
       },
 
@@ -370,11 +393,7 @@ define('library-app/routes/contact', ['exports', 'ember'], function (exports, _e
           model.destroyRecord();
         }
       }
-      // willTransition() {
-      //   // rollbackAttributes() removes the record from the store
-      //   // if the model 'isNew'
-      //   this.controller.get('model').rollbackAttributes();
-      // }
+
     }
   });
 });
@@ -899,8 +918,8 @@ define("library-app/templates/contact", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 15,
-            "column": 56
+            "line": 20,
+            "column": 78
           }
         },
         "moduleName": "library-app/templates/contact.hbs"
@@ -915,10 +934,9 @@ define("library-app/templates/contact", ["exports"], function (exports) {
         var el2 = dom.createTextNode("Contact");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n\n");
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("label");
-        dom.setAttribute(el1, "for", "emailAddress");
         var el2 = dom.createTextNode("* Email: ");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
@@ -929,7 +947,6 @@ define("library-app/templates/contact", ["exports"], function (exports) {
         var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("label");
-        dom.setAttribute(el1, "for", "name");
         var el2 = dom.createTextNode("* Name: ");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
@@ -947,17 +964,19 @@ define("library-app/templates/contact", ["exports"], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("br");
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("button");
         dom.setAttribute(el1, "type", "submit");
         dom.setAttribute(el1, "class", "btn btn-primary btn-lg btn-block");
-        var el2 = dom.createTextNode("Submit message");
+        var el2 = dom.createTextNode("Submit message\n");
         dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n        \n");
         dom.appendChild(el0, el1);
         return el0;
       },
@@ -971,7 +990,7 @@ define("library-app/templates/contact", ["exports"], function (exports) {
         morphs[4] = dom.createElementMorph(element0);
         return morphs;
       },
-      statements: [["inline", "input", [], ["id", "emailAddress", "type", "email", "value", ["subexpr", "@mut", [["get", "emailAddress", ["loc", [null, [5, 45], [5, 57]]]]], [], []], "class", "form-control", "placeholder", "Please type your e-mail address.", "autofocus", "autofocus"], ["loc", [null, [5, 0], [5, 149]]]], ["inline", "input", [], ["id", "name", "type", "text", "value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [8, 36], [8, 40]]]]], [], []], "class", "form-control", "placeholder", "Please type your name."], ["loc", [null, [8, 0], [8, 100]]]], ["inline", "textarea", [], ["id", "message", "value", ["subexpr", "@mut", [["get", "message", ["loc", [null, [11, 30], [11, 37]]]]], [], []], "class", "form-control", "placeholder", "Your message. (At least 5 characters.)", "rows", "7"], ["loc", [null, [11, 0], [11, 123]]]], ["attribute", "disabled", ["get", "isDisabled", ["loc", [null, [14, 19], [14, 29]]]]], ["element", "action", ["sendMessage"], [], ["loc", [null, [15, 8], [15, 32]]]]],
+      statements: [["inline", "input", [], ["type", "email", "value", ["subexpr", "@mut", [["get", "model.email", ["loc", [null, [4, 27], [4, 38]]]]], [], []], "class", "form-control", "autofocus", "autofocus", "placeholder", "please type your email"], ["loc", [null, [4, 0], [4, 120]]]], ["inline", "input", [], ["type", "text", "value", ["subexpr", "@mut", [["get", "model.name", ["loc", [null, [7, 26], [7, 36]]]]], [], []], "class", "form-control", "placeholder", "please type your name"], ["loc", [null, [7, 0], [7, 95]]]], ["inline", "textarea", [], ["value", ["subexpr", "@mut", [["get", "model.message", ["loc", [null, [10, 17], [10, 30]]]]], [], []], "class", "form-control", "rows", "7", "placeholder", "please type your message, it needs to be longer than 5 characters"], ["loc", [null, [10, 0], [10, 142]]]], ["attribute", "disabled", ["get", "isDisabled", ["loc", [null, [16, 15], [16, 25]]]]], ["element", "action", ["saveMessage", ["get", "model", ["loc", [null, [17, 31], [17, 36]]]]], [], ["loc", [null, [17, 8], [17, 38]]]]],
       locals: [],
       templates: []
     };
