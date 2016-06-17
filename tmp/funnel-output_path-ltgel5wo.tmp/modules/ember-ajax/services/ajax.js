@@ -1,0 +1,1 @@
+/Users/alvaro.uribe/workspace/EMBER/library-app/tmp/funnel-input_base_path-0W8nGbKI.tmp/0/services/ajax.js

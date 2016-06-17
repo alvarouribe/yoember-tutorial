@@ -1,0 +1,1 @@
+/Users/alvaro.uribe/workspace/EMBER/library-app/tmp/funnel-input_base_path-kNFZ1L6z.tmp/0/torii-providers/firebase.js
