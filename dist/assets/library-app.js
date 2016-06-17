@@ -41,18 +41,39 @@ define('library-app/components/app-version', ['exports', 'ember-cli-app-version/
 define('library-app/controllers/contact', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller.extend({
 
-    email: '',
+    emailAddress: '',
     name: '',
     message: '',
 
-    isEmailValid: _ember['default'].computed.match('email', /^.+@.+\..+$/),
+    isEmailValid: _ember['default'].computed.match('emailAddress', /^.+@.+\..+$/),
     isNameValid: _ember['default'].computed.gte('name.length', 0),
     isMessageValid: _ember['default'].computed.gte('message.length', 5),
 
     isDisabled: _ember['default'].computed('isEmailValid', 'isMessageValid', 'isNameValid', function () {
       return !(this.get('isEmailValid') && this.get('isMessageValid') && this.get('isNameValid'));
     }),
-    actions: {}
+    actions: {
+      sendMessage: function sendMessage() {
+        var email = this.get('emailAddress');
+        var name = this.get('name');
+        var message = this.get('message');
+        var newContact = this.store.createRecord('contact', { email: email, name: name, message: message });
+        newContact.save().then(function (response) {
+          alert('New contact saved. Response back!');
+        });
+
+        console.log('SEND: ');
+
+        console.log('isEmailValid');
+        console.log(this.get('isEmailValid'));
+
+        console.log('isMessageValid');
+        console.log(this.get('isMessageValid'));
+
+        console.log('isNameValid');
+        console.log(this.get('isNameValid'));
+      }
+    }
 
   });
 });
@@ -692,7 +713,7 @@ define("library-app/templates/contact", ["exports"], function (exports) {
           },
           "end": {
             "line": 15,
-            "column": 62
+            "column": 56
           }
         },
         "moduleName": "library-app/templates/contact.hbs"
@@ -710,7 +731,7 @@ define("library-app/templates/contact", ["exports"], function (exports) {
         var el1 = dom.createTextNode("\n\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("label");
-        dom.setAttribute(el1, "for", "email");
+        dom.setAttribute(el1, "for", "emailAddress");
         var el2 = dom.createTextNode("* Email: ");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
@@ -763,7 +784,7 @@ define("library-app/templates/contact", ["exports"], function (exports) {
         morphs[4] = dom.createElementMorph(element0);
         return morphs;
       },
-      statements: [["inline", "input", [], ["id", "email", "value", ["subexpr", "@mut", [["get", "model.email", ["loc", [null, [5, 25], [5, 36]]]]], [], []], "type", "email", "class", "form-control", "placeholder", "Please type your e-mail address.", "autofocus", "autofocus"], ["loc", [null, [5, 0], [5, 141]]]], ["inline", "input", [], ["id", "name", "value", ["subexpr", "@mut", [["get", "model.name", ["loc", [null, [8, 24], [8, 34]]]]], [], []], "type", "text", "class", "form-control", "placeholder", "Please type your name."], ["loc", [null, [8, 0], [8, 106]]]], ["inline", "textarea", [], ["class", "form-control", "value", ["subexpr", "@mut", [["get", "model.message", ["loc", [null, [11, 38], [11, 51]]]]], [], []], "placeholder", "Your message. (At least 5 characters.)", "rows", "7"], ["loc", [null, [11, 0], [11, 115]]]], ["attribute", "disabled", ["get", "isDisabled", ["loc", [null, [14, 19], [14, 29]]]]], ["element", "action", ["saveMessage", ["get", "model", ["loc", [null, [15, 31], [15, 36]]]]], [], ["loc", [null, [15, 8], [15, 38]]]]],
+      statements: [["inline", "input", [], ["id", "emailAddress", "type", "email", "value", ["subexpr", "@mut", [["get", "emailAddress", ["loc", [null, [5, 45], [5, 57]]]]], [], []], "class", "form-control", "placeholder", "Please type your e-mail address.", "autofocus", "autofocus"], ["loc", [null, [5, 0], [5, 149]]]], ["inline", "input", [], ["id", "name", "type", "text", "value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [8, 36], [8, 40]]]]], [], []], "class", "form-control", "placeholder", "Please type your name."], ["loc", [null, [8, 0], [8, 100]]]], ["inline", "textarea", [], ["id", "message", "value", ["subexpr", "@mut", [["get", "message", ["loc", [null, [11, 30], [11, 37]]]]], [], []], "class", "form-control", "placeholder", "Your message. (At least 5 characters.)", "rows", "7"], ["loc", [null, [11, 0], [11, 123]]]], ["attribute", "disabled", ["get", "isDisabled", ["loc", [null, [14, 19], [14, 29]]]]], ["element", "action", ["sendMessage"], [], ["loc", [null, [15, 8], [15, 32]]]]],
       locals: [],
       templates: []
     };

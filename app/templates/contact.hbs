@@ -1,15 +1,15 @@
 <h2>Contact</h2>
 
 
-<label for="email">* Email: </label>
-{{input id="email" value=model.email type="email" class="form-control" placeholder="Please type your e-mail address." autofocus="autofocus"}}
+<label for="emailAddress">* Email: </label>
+{{input id="emailAddress" type="email" value=emailAddress class="form-control" placeholder="Please type your e-mail address." autofocus="autofocus"}}
 
 <label for="name">* Name: </label>
-{{input id="name" value=model.name type="text" class="form-control" placeholder="Please type your name."}}
+{{input id="name" type="text" value=name class="form-control" placeholder="Please type your name."}}
 
 <p>* Your message: </p>
-{{textarea class="form-control" value=model.message placeholder="Your message. (At least 5 characters.)" rows="7"}}
+{{textarea id="message" value=message class="form-control" placeholder="Your message. (At least 5 characters.)" rows="7" }}
 <br>
 <button type="submit"  class="btn btn-primary btn-lg btn-block" 
         disabled={{isDisabled}}
-        {{action 'saveMessage' model}}>Submit message</button>
+        {{action 'sendMessage'}}>Submit message</button>
