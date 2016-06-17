@@ -1880,7 +1880,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("library-app/app")["default"].create({"name":"library-app","version":"0.0.0+13be74a6"});
+  require("library-app/app")["default"].create({"name":"library-app","version":"0.0.0+94b9ef9d"});
 }
 
 /* jshint ignore:end */
