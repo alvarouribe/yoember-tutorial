@@ -65,7 +65,6 @@ define('library-app/controllers/contact', ['exports', 'ember'], function (export
         console.log('isNameValid');
         console.log(this.get('isNameValid'));
       }
-
     }
 
   });
@@ -73,20 +72,17 @@ define('library-app/controllers/contact', ['exports', 'ember'], function (export
 // sendMessage() {
 //   console.log('CONTROLLER sendMessage newMessage: ');
 //   console.log(newMessage);
-
 ////////////////////////
 // THIS FORM WORKS TO     
 ////////////////////////
 // const email = this.get('emailAddress');
 // const name = this.get('name');
 // const message = this.get('message');
-
 // const newContact = this.store.createRecord('contact', {
 //   email: email,
 //   name: name,
 //   message: message
 // });
-
 // newContact.save().then((response) => {
 //   alert('New contact saved. Response back!');
 //   console.log(response);
