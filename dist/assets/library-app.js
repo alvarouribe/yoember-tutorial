@@ -41,31 +41,18 @@ define('library-app/components/app-version', ['exports', 'ember-cli-app-version/
 define('library-app/controllers/contact', ['exports', 'ember'], function (exports, _ember) {
   exports['default'] = _ember['default'].Controller.extend({
 
-    emailAddress: '',
+    email: '',
     name: '',
     message: '',
 
-    isEmailValid: _ember['default'].computed.match('emailAddress', /^.+@.+\..+$/),
+    isEmailValid: _ember['default'].computed.match('email', /^.+@.+\..+$/),
     isNameValid: _ember['default'].computed.gte('name.length', 0),
     isMessageValid: _ember['default'].computed.gte('message.length', 5),
 
     isDisabled: _ember['default'].computed('isEmailValid', 'isMessageValid', 'isNameValid', function () {
       return !(this.get('isEmailValid') && this.get('isMessageValid') && this.get('isNameValid'));
     }),
-    actions: {
-      sendMessage: function sendMessage() {
-        console.log('SEND: ');
-
-        console.log('isEmailValid');
-        console.log(this.get('isEmailValid'));
-
-        console.log('isMessageValid');
-        console.log(this.get('isMessageValid'));
-
-        console.log('isNameValid');
-        console.log(this.get('isNameValid'));
-      }
-    }
+    actions: {}
 
   });
 });
@@ -267,7 +254,7 @@ define("library-app/instance-initializers/ember-data", ["exports", "ember-data/-
 define('library-app/models/contact', ['exports', 'ember-data/model', 'ember-data/attr'], function (exports, _emberDataModel, _emberDataAttr) {
   exports['default'] = _emberDataModel['default'].extend({
     email: (0, _emberDataAttr['default'])('string'),
-    mail: (0, _emberDataAttr['default'])('string'),
+    name: (0, _emberDataAttr['default'])('string'),
     message: (0, _emberDataAttr['default'])('string')
   });
 });
@@ -776,7 +763,7 @@ define("library-app/templates/contact", ["exports"], function (exports) {
         morphs[4] = dom.createElementMorph(element0);
         return morphs;
       },
-      statements: [["inline", "input", [], ["id", "email", "value", ["subexpr", "@mut", [["get", "model.email", ["loc", [null, [5, 25], [5, 36]]]]], [], []], "type", "email", "value", ["subexpr", "@mut", [["get", "emailAddress", ["loc", [null, [5, 56], [5, 68]]]]], [], []], "class", "form-control", "placeholder", "Please type your e-mail address.", "autofocus", "autofocus"], ["loc", [null, [5, 0], [5, 160]]]], ["inline", "input", [], ["id", "name", "value", ["subexpr", "@mut", [["get", "model.name", ["loc", [null, [8, 24], [8, 34]]]]], [], []], "type", "text", "value", ["subexpr", "@mut", [["get", "name", ["loc", [null, [8, 53], [8, 57]]]]], [], []], "class", "form-control", "placeholder", "Please type your name."], ["loc", [null, [8, 0], [8, 117]]]], ["inline", "textarea", [], ["class", "form-control", "value", ["subexpr", "@mut", [["get", "model.message", ["loc", [null, [11, 38], [11, 51]]]]], [], []], "placeholder", "Your message. (At least 5 characters.)", "rows", "7", "value", ["subexpr", "@mut", [["get", "message", ["loc", [null, [11, 120], [11, 127]]]]], [], []]], ["loc", [null, [11, 0], [11, 129]]]], ["attribute", "disabled", ["get", "isDisabled", ["loc", [null, [14, 19], [14, 29]]]]], ["element", "action", ["saveMessage", ["get", "model", ["loc", [null, [15, 31], [15, 36]]]]], [], ["loc", [null, [15, 8], [15, 38]]]]],
+      statements: [["inline", "input", [], ["id", "email", "value", ["subexpr", "@mut", [["get", "model.email", ["loc", [null, [5, 25], [5, 36]]]]], [], []], "type", "email", "class", "form-control", "placeholder", "Please type your e-mail address.", "autofocus", "autofocus"], ["loc", [null, [5, 0], [5, 141]]]], ["inline", "input", [], ["id", "name", "value", ["subexpr", "@mut", [["get", "model.name", ["loc", [null, [8, 24], [8, 34]]]]], [], []], "type", "text", "class", "form-control", "placeholder", "Please type your name."], ["loc", [null, [8, 0], [8, 106]]]], ["inline", "textarea", [], ["class", "form-control", "value", ["subexpr", "@mut", [["get", "model.message", ["loc", [null, [11, 38], [11, 51]]]]], [], []], "placeholder", "Your message. (At least 5 characters.)", "rows", "7"], ["loc", [null, [11, 0], [11, 115]]]], ["attribute", "disabled", ["get", "isDisabled", ["loc", [null, [14, 19], [14, 29]]]]], ["element", "action", ["saveMessage", ["get", "model", ["loc", [null, [15, 31], [15, 36]]]]], [], ["loc", [null, [15, 8], [15, 38]]]]],
       locals: [],
       templates: []
     };

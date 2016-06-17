@@ -2,13 +2,13 @@
 
 
 <label for="email">* Email: </label>
-{{input id="email" value=model.email type="email" value=emailAddress class="form-control" placeholder="Please type your e-mail address." autofocus="autofocus"}}
+{{input id="email" value=model.email type="email" class="form-control" placeholder="Please type your e-mail address." autofocus="autofocus"}}
 
 <label for="name">* Name: </label>
-{{input id="name" value=model.name type="text" value=name class="form-control" placeholder="Please type your name."}}
+{{input id="name" value=model.name type="text" class="form-control" placeholder="Please type your name."}}
 
 <p>* Your message: </p>
-{{textarea class="form-control" value=model.message placeholder="Your message. (At least 5 characters.)" rows="7" value=message}}
+{{textarea class="form-control" value=model.message placeholder="Your message. (At least 5 characters.)" rows="7"}}
 <br>
 <button type="submit"  class="btn btn-primary btn-lg btn-block" 
         disabled={{isDisabled}}
