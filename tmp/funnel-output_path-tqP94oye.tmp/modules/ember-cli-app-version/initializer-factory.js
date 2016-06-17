@@ -1,0 +1,1 @@
+/Users/alvaro.uribe/workspace/EMBER/library-app-yoember/tmp/funnel-input_base_path-SBP0NB0h.tmp/0/initializer-factory.js
