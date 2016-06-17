@@ -1,0 +1,1 @@
+/Users/alvaro.uribe/workspace/EMBER/yoember/tmp/funnel-input_base_path-AxV9mSo9.tmp/0/bower_components/ember-cli-test-loader/test-loader.js

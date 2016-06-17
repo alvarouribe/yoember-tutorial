@@ -1,0 +1,1 @@
+/Users/alvaro.uribe/workspace/EMBER/library-app-yoember/tmp/funnel-input_base_path-9w6186Xs.tmp/0/components/app-version.js

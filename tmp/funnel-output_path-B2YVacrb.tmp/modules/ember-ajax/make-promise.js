@@ -1,0 +1,1 @@
+/Users/alvaro.uribe/workspace/EMBER/yoember/tmp/funnel-input_base_path-6AIgeNNT.tmp/0/make-promise.js
