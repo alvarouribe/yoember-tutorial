@@ -231,6 +231,45 @@ define("library-app/templates/navbar", ["exports"], function (exports) {
         templates: []
       };
     })();
+    var child6 = (function () {
+      return {
+        meta: {
+          "fragmentReason": false,
+          "revision": "Ember@2.5.1",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 26,
+              "column": 18
+            },
+            "end": {
+              "line": 26,
+              "column": 83
+            }
+          },
+          "moduleName": "library-app/templates/navbar.hbs"
+        },
+        isEmpty: false,
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createElement("a");
+          dom.setAttribute(el1, "href", "");
+          var el2 = dom.createTextNode("Contacts");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes() {
+          return [];
+        },
+        statements: [],
+        locals: [],
+        templates: []
+      };
+    })();
     return {
       meta: {
         "fragmentReason": {
@@ -244,7 +283,7 @@ define("library-app/templates/navbar", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 31,
+            "line": 32,
             "column": 6
           }
         },
@@ -363,6 +402,10 @@ define("library-app/templates/navbar", ["exports"], function (exports) {
         dom.appendChild(el6, el7);
         var el7 = dom.createComment("");
         dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n                  ");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createComment("");
+        dom.appendChild(el6, el7);
         var el7 = dom.createTextNode("\n              ");
         dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
@@ -391,18 +434,20 @@ define("library-app/templates/navbar", ["exports"], function (exports) {
         var element0 = dom.childAt(fragment, [0, 1]);
         var element1 = dom.childAt(element0, [3]);
         var element2 = dom.childAt(element1, [1]);
-        var morphs = new Array(6);
+        var element3 = dom.childAt(element1, [3, 1, 3]);
+        var morphs = new Array(7);
         morphs[0] = dom.createMorphAt(dom.childAt(element0, [1]), 3, 3);
         morphs[1] = dom.createMorphAt(element2, 1, 1);
         morphs[2] = dom.createMorphAt(element2, 3, 3);
         morphs[3] = dom.createMorphAt(element2, 5, 5);
         morphs[4] = dom.createMorphAt(element2, 7, 7);
-        morphs[5] = dom.createMorphAt(dom.childAt(element1, [3, 1, 3]), 1, 1);
+        morphs[5] = dom.createMorphAt(element3, 1, 1);
+        morphs[6] = dom.createMorphAt(element3, 3, 3);
         return morphs;
       },
-      statements: [["block", "link-to", ["index"], ["class", "navbar-brand"], 0, null, ["loc", [null, [10, 6], [10, 70]]]], ["block", "link-to", ["index"], ["tagName", "li"], 1, null, ["loc", [null, [15, 6], [15, 70]]]], ["block", "link-to", ["libraries"], ["tagName", "li"], 2, null, ["loc", [null, [16, 6], [16, 79]]]], ["block", "link-to", ["about"], ["tagName", "li"], 3, null, ["loc", [null, [17, 6], [17, 71]]]], ["block", "link-to", ["contact"], ["tagName", "li"], 4, null, ["loc", [null, [18, 6], [18, 75]]]], ["block", "link-to", ["admin.invitations"], ["tagName", "li"], 5, null, ["loc", [null, [25, 18], [25, 101]]]]],
+      statements: [["block", "link-to", ["index"], ["class", "navbar-brand"], 0, null, ["loc", [null, [10, 6], [10, 70]]]], ["block", "link-to", ["index"], ["tagName", "li"], 1, null, ["loc", [null, [15, 6], [15, 70]]]], ["block", "link-to", ["libraries"], ["tagName", "li"], 2, null, ["loc", [null, [16, 6], [16, 79]]]], ["block", "link-to", ["about"], ["tagName", "li"], 3, null, ["loc", [null, [17, 6], [17, 71]]]], ["block", "link-to", ["contact"], ["tagName", "li"], 4, null, ["loc", [null, [18, 6], [18, 75]]]], ["block", "link-to", ["admin.invitations"], ["tagName", "li"], 5, null, ["loc", [null, [25, 18], [25, 101]]]], ["block", "link-to", ["admin.contacts"], ["tagName", "li"], 6, null, ["loc", [null, [26, 18], [26, 95]]]]],
       locals: [],
-      templates: [child0, child1, child2, child3, child4, child5]
+      templates: [child0, child1, child2, child3, child4, child5, child6]
     };
   })());
 });

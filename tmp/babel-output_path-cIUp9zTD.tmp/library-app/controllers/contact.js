@@ -17,9 +17,16 @@ define('library-app/controllers/contact', ['exports', 'ember'], function (export
         var email = this.get('emailAddress');
         var name = this.get('name');
         var message = this.get('message');
-        var newContact = this.store.createRecord('contact', { email: email, name: name, message: message });
+
+        var newContact = this.store.createRecord('contact', {
+          email: email,
+          name: name,
+          message: message
+        });
+
         newContact.save().then(function (response) {
           alert('New contact saved. Response back!');
+          console.log(response);
         });
 
         console.log('SEND: ');

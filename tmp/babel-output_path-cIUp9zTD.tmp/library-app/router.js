@@ -11,6 +11,7 @@ define('library-app/router', ['exports', 'ember', 'library-app/config/environmen
 
     this.route('admin', function () {
       this.route('invitations');
+      this.route('contacts');
     });
 
     this.route('libraries', function () {

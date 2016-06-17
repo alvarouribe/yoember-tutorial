@@ -19,9 +19,16 @@ export default Ember.Controller.extend({
     const email = this.get('emailAddress');
     const name = this.get('name');
     const message = this.get('message');
-    const newContact = this.store.createRecord('contact', { email: email, name: name, message: message });
+    
+    const newContact = this.store.createRecord('contact', { 
+      email: email, 
+      name: name, 
+      message: message 
+    });
+
     newContact.save().then((response) => {
       alert('New contact saved. Response back!');
+      console.log(response);
     });
 
   	console.log('SEND: ');
