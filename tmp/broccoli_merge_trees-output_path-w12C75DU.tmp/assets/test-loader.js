@@ -1,1 +1,0 @@
-/Users/alvaro.uribe/workspace/EMBER/library-app-yoember/bower_components/ember-cli-test-loader/test-loader.js

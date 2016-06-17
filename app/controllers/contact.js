@@ -18,19 +18,6 @@ export default Ember.Controller.extend({
 
 		testController(newMessage) {
       console.log('TEST VALIDATION newMessage: ');
-      // console.log(newMessage);
-
-      // const name = this.get('model.name');
-      // console.log('name: ');
-      // console.log(name);
-      
-      // console.log('this.get(email)');
-      // console.log('this.get(message)');
-
-      // console.log(this.get('email'));
-      // console.log(this.get('name'));
-      // console.log(this.get('message'));
-
       console.log('isEmailValid');
       console.log(this.get('isEmailValid'));
 

@@ -56,19 +56,6 @@ define('library-app/controllers/contact', ['exports', 'ember'], function (export
 
       testController: function testController(newMessage) {
         console.log('TEST VALIDATION newMessage: ');
-        // console.log(newMessage);
-
-        // const name = this.get('model.name');
-        // console.log('name: ');
-        // console.log(name);
-
-        // console.log('this.get(email)');
-        // console.log('this.get(message)');
-
-        // console.log(this.get('email'));
-        // console.log(this.get('name'));
-        // console.log(this.get('message'));
-
         console.log('isEmailValid');
         console.log(this.get('isEmailValid'));
 
@@ -2139,7 +2126,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("library-app/app")["default"].create({"name":"library-app","version":"0.0.0+60d9a482"});
+  require("library-app/app")["default"].create({"name":"library-app","version":"0.0.0+d9998648"});
 }
 
 /* jshint ignore:end */

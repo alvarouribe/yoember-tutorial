@@ -1,1 +1,0 @@
-{"modulePrefix":"library-app","environment":"development","contentSecurityPolicy":{"connect-src":"'self' https://auth.firebase.com wss://*.firebaseio.com"},"firebase":"https://library-app-9aa52.firebaseio.com/","baseURL":"/","locationType":"auto","EmberENV":{"FEATURES":{}},"APP":{"name":"library-app","version":"0.0.0+60d9a482"},"exportApplicationGlobal":true}
